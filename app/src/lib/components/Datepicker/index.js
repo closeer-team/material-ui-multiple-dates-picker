@@ -4,6 +4,7 @@ import DateUtilities from './utils'
 import Calendar from './Calendar'
 import { Dialog } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
+import ThemeProvider from "./ThemeProvider";
 
 const useStyles = makeStyles(theme => ({
   dialogPaper: {
@@ -13,11 +14,11 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function initState (selectedDates) {
+function initState ({ selectedDates, minDate, maxDate }) {
   return {
     selectedDates: selectedDates ? [...selectedDates] : [],
-    minDate: null,
-    maxDate: null
+    minDate: minDate ? minDate : null,
+    maxDate: maxDate ? maxDate : null,
   }
 }
 
@@ -25,6 +26,10 @@ function reducer (state, action) {
   switch (action.type) {
     case 'setSelectedDates':
       return { ...state, selectedDates: action.payload }
+    case 'setMinDate':
+      return { ...state, minDate: action.payload }
+    case 'setMaxDate':
+      return { ...state, maxDate: action.payload }
     default:
       return new Error('wrong action type in multiple date picker reducer')
   }
@@ -32,6 +37,8 @@ function reducer (state, action) {
 
 const DatePicker = ({
   open,
+  minDate: initMinDate,
+  maxDate: initMaxDate,
   readOnly,
   onCancel,
   onSubmit,
@@ -46,7 +53,7 @@ const DatePicker = ({
 
   const [{ selectedDates, minDate, maxDate }, dispatch] = useReducer(
     reducer,
-    outerSelectedDates,
+    { selectedDates: outerSelectedDates, minDate: initMinDate, maxDate: initMaxDate },
     initState
   )
 
@@ -119,28 +126,32 @@ const DatePicker = ({
   )
 
   return (
-    <Dialog open={open} classes={{ paper: classes.dialogPaper }}>
-      {/* <DialogContent> */}
-      <Calendar
-        selectedDates={selectedDates}
-        onSelect={onSelect}
-        onRemoveAtIndex={onRemoveAtIndex}
-        minDate={minDate}
-        maxDate={maxDate}
-        onCancel={handleCancel}
-        onOk={handleOk}
-        readOnly={readOnly}
-        cancelButtonText={cancelButtonText}
-        submitButtonText={submitButtonText}
-        selectedDatesTitle={selectedDatesTitle}
-      />
-      {/* </DialogContent> */}
-    </Dialog>
+    <ThemeProvider>
+      <Dialog open={open} classes={{ paper: classes.dialogPaper }}>
+        {/* <DialogContent> */}
+        <Calendar
+          selectedDates={selectedDates}
+          onSelect={onSelect}
+          onRemoveAtIndex={onRemoveAtIndex}
+          minDate={minDate}
+          maxDate={maxDate}
+          onCancel={handleCancel}
+          onOk={handleOk}
+          readOnly={readOnly}
+          cancelButtonText={cancelButtonText}
+          submitButtonText={submitButtonText}
+          selectedDatesTitle={selectedDatesTitle}
+        />
+        {/* </DialogContent> */}
+      </Dialog>
+    </ThemeProvider>
   )
 }
 
 DatePicker.propTypes = {
   open: PropTypes.bool.isRequired,
+  minDate: PropTypes.instanceOf(Date),
+  maxDate: PropTypes.instanceOf(Date),
   readOnly: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,

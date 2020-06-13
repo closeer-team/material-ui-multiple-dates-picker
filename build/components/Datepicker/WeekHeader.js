@@ -35,7 +35,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
 });
 
 var Week = function Week(props) {
-  return _react["default"].createElement(_core.Typography, _extends({
+  return /*#__PURE__*/_react["default"].createElement(_core.Typography, _extends({
     variant: "overline",
     color: "textSecondary"
   }, props));
@@ -46,10 +46,10 @@ var WeekHeader = function WeekHeader() {
 
   var weekdayNames = _moment["default"].weekdaysShort(true);
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: classes.root
   }, weekdayNames.map(function (name) {
-    return _react["default"].createElement(Week, {
+    return /*#__PURE__*/_react["default"].createElement(Week, {
       key: name
     }, name);
   }));

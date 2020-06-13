@@ -1,6 +1,6 @@
 {
-  "name": "@randex/material-ui-multiple-dates-picker",
-  "version": "0.3.0",
+  "name": "madhouse-mui-multiple-dates-picker",
+  "version": "1.0.8",
   "description": "Date Picker with multiple selection based on Material UI",
   "main": "./build/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/randex/react-multiple-datepicker.git"
+    "url": "git+https://github.com/nxtcoder17/material-ui-multiple-dates-picker"
   },
   "keywords": [
     "multi-datepicker",
@@ -21,8 +21,8 @@
     "datepicker"
   ],
   "author": {
-    "name": "Ruslan Murin",
-    "email": "randexdev@gmail.com",
+    "name": "NxtCoder17",
+    "email": "nxtcoder17@gmail.com",
     "url": "http://randexdev.com"
   },
   "contributors": [],
@@ -31,7 +31,8 @@
     "url": "https://github.com/randex/react-multiple-datepicker/issues"
   },
   "homepage": "https://github.com/randex/react-multiple-datepicker#readme",
-  "dependencies": {
+  "dependencies": {},
+  "peerDependencies": {
     "@material-ui/core": "^4.3.2",
     "@material-ui/icons": "^4.2.1",
     "@material-ui/styles": "^4.3.0",

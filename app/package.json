@@ -4,10 +4,11 @@
   "private": true,
   "homepage": "https://randex.github.io/material-ui-multiple-dates-picker/",
   "dependencies": {
+  },
+  "peerDependencies": {
     "moment": "^2.24.0",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.0"
+    "react-dom": "^16.9.0"
   },
   "scripts": {
     "start": "react-scripts start",

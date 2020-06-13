@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { makeStyles, Typography, ButtonBase } from '@material-ui/core'
+import {makeStyles, Typography, ButtonBase, useTheme} from '@material-ui/core'
 
 const useCircleStyles = makeStyles(theme => ({
   root: {
@@ -39,6 +39,7 @@ const useCircleStyles = makeStyles(theme => ({
 
 const Circle = ({ label, disabled, checked, onCheck, className, isToday }) => {
   const classes = useCircleStyles()
+  const theme = useTheme();
 
   const handleClick = useCallback(
     () => {
@@ -64,6 +65,7 @@ const Circle = ({ label, disabled, checked, onCheck, className, isToday }) => {
       )}
       disabled={disabled}
       onClick={handleClick}
+      style={{ ...(disabled ? { background: theme.palette.grey.main, fontWeight: 200 }: {})}}
     >
       <Typography
         color='inherit'
