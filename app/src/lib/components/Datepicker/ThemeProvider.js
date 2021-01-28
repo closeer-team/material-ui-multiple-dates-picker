@@ -7,9 +7,19 @@ import purple from '@material-ui/core/colors/purple'
 function createTheme (light) {
   const theme = {
     palette: {
-      type: light ? 'light' : 'dark',
-      primary: orange,
-      secondary: purple,
+      type: 'dark',
+      primary: {
+        // light: será calculada com base em palette.primary.main,
+        main: '#b0f82d',
+        // dark: será calculada com base em palette.primary.main,
+        // contrastText: será calculada para contrastar com palette.primary.main
+      },
+      secondary: {
+        light: '#b0f82d',
+        main: '#b0f82d',
+        // dark: será calculada com base palette.secondary.main,
+        contrastText: '#ffcc00',
+      },
       grey: {
         main: '#e3e3e3',
       },
