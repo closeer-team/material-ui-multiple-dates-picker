@@ -39,11 +39,21 @@ function createTheme(light) {
   var theme = {
     palette: {
       type: light ? 'light' : 'dark',
-      primary: _orange["default"],
-      secondary: _purple["default"],
+      primary: {
+        // light: será calculada com base em palette.primary.main,
+        main: '#b0f82d',
+        // dark: será calculada com base em palette.primary.main,
+        // contrastText: será calculada para contrastar com palette.primary.main
+      },
+      secondary: {
+        light: '#b0f82d',
+        main: '#b0f82d',
+        // dark: será calculada com base palette.secondary.main,
+        contrastText: '#ffcc00',
+      },
       grey: {
-        main: '#e3e3e3'
-      }
+        main: '#e3e3e3',
+      },
     }
   };
   return (0, _styles.createMuiTheme)(theme);
