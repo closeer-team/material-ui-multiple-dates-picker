@@ -21,6 +21,9 @@ var _styles = require("@material-ui/styles");
 
 var _ThemeProvider = _interopRequireDefault(require("./ThemeProvider"));
 
+
+var _moment = _interopRequireDefault(require("moment"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -65,8 +68,8 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
 
 function initState(_ref) {
   var selectedDates = _ref.selectedDates,
-      minDate = _ref.minDate,
-      maxDate = _ref.maxDate;
+    minDate = _ref.minDate,
+    maxDate = _ref.maxDate;
   return {
     selectedDates: selectedDates ? _toConsumableArray(selectedDates) : [],
     minDate: minDate ? minDate : null,
@@ -98,17 +101,21 @@ function reducer(state, action) {
 
 var DatePicker = function DatePicker(_ref2) {
   var open = _ref2.open,
-      initMinDate = _ref2.minDate,
-      initMaxDate = _ref2.maxDate,
-      readOnly = _ref2.readOnly,
-      onCancel = _ref2.onCancel,
-      onSubmit = _ref2.onSubmit,
-      outerSelectedDates = _ref2.selectedDates,
-      cancelButtonText = _ref2.cancelButtonText,
-      _ref2$submitButtonTex = _ref2.submitButtonText,
-      submitButtonText = _ref2$submitButtonTex === void 0 ? 'Submit' : _ref2$submitButtonTex,
-      _ref2$selectedDatesTi = _ref2.selectedDatesTitle,
-      selectedDatesTitle = _ref2$selectedDatesTi === void 0 ? 'Selected Dates' : _ref2$selectedDatesTi;
+    initMinDate = _ref2.minDate,
+    initMaxDate = _ref2.maxDate,
+    readOnly = _ref2.readOnly,
+    onCancel = _ref2.onCancel,
+    onSubmit = _ref2.onSubmit,
+    limit = _ref2.limit,
+    onLimit = _ref2.onLimit,
+    limitPerWeek = _ref2.limitPerWeek,
+    onLimitPerWeek = _ref2.onLimitPerWeek,
+    outerSelectedDates = _ref2.selectedDates,
+    cancelButtonText = _ref2.cancelButtonText,
+    _ref2$submitButtonTex = _ref2.submitButtonText,
+    submitButtonText = _ref2$submitButtonTex === void 0 ? 'Submit' : _ref2$submitButtonTex,
+    _ref2$selectedDatesTi = _ref2.selectedDatesTitle,
+    selectedDatesTitle = _ref2$selectedDatesTi === void 0 ? 'Selected Dates' : _ref2$selectedDatesTi;
 
   if (cancelButtonText == null) {
     cancelButtonText = readOnly ? 'Dismiss' : 'Cancel';
@@ -119,12 +126,12 @@ var DatePicker = function DatePicker(_ref2) {
     minDate: initMinDate,
     maxDate: initMaxDate
   }, initState),
-      _useReducer2 = _slicedToArray(_useReducer, 2),
-      _useReducer2$ = _useReducer2[0],
-      selectedDates = _useReducer2$.selectedDates,
-      minDate = _useReducer2$.minDate,
-      maxDate = _useReducer2$.maxDate,
-      dispatch = _useReducer2[1];
+    _useReducer2 = _slicedToArray(_useReducer, 2),
+    _useReducer2$ = _useReducer2[0],
+    selectedDates = _useReducer2$.selectedDates,
+    minDate = _useReducer2$.minDate,
+    maxDate = _useReducer2$.maxDate,
+    dispatch = _useReducer2[1];
 
   var classes = useStyles();
   var onSelect = (0, _react.useCallback)(function (day) {
@@ -138,10 +145,25 @@ var DatePicker = function DatePicker(_ref2) {
         })
       });
     } else {
-      dispatch({
-        type: 'setSelectedDates',
-        payload: [].concat(_toConsumableArray(selectedDates), [day])
-      });
+      if (selectedDates.length < limit) {
+        var count = 0;
+        selectedDates.map(item => {
+           if((0, _moment["default"])(item).week() === (0, _moment["default"])(day).week()){
+             count++;
+           }
+        })
+        if(count < limitPerWeek){
+          dispatch({
+            type: 'setSelectedDates',
+            payload: [].concat(_toConsumableArray(selectedDates), [day])
+          });
+        } else {
+          onLimitPerWeek()
+        }
+       
+      } else {
+        onLimit()
+      }
     }
   }, [selectedDates, dispatch, readOnly]);
   var onRemoveAtIndex = (0, _react.useCallback)(function (index) {
