@@ -146,12 +146,7 @@ var Calendar = function Calendar(_ref) {
     onOk: onOk,
     cancelButtonText: cancelButtonText,
     submitButtonText: submitButtonText
-  })), /*#__PURE__*/_react["default"].createElement(_DateDisplay["default"], {
-    selectedDatesTitle: selectedDatesTitle,
-    selectedDates: selectedDates,
-    readOnly: readOnly,
-    onRemoveAtIndex: onRemoveAtIndex
-  }));
+  })));
 };
 
 var _default = Calendar;
