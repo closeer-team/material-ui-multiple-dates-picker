@@ -49,7 +49,7 @@ var useCircleStyles = (0, _core.makeStyles)(function (theme) {
       background: theme.palette.primary.main
     },
     checkedRootDisabled: {
-      background: theme.palette.action.disabled
+      background: "#faaa"
     },
     checkedText: {
       color: theme.palette.type === 'dark' ? theme.palette.getContrastText(theme.palette.primary.main) : theme.palette.common.white
@@ -64,11 +64,11 @@ var Circle = function Circle(_ref) {
   var _classNames;
 
   var label = _ref.label,
-      disabled = _ref.disabled,
-      checked = _ref.checked,
-      onCheck = _ref.onCheck,
-      className = _ref.className,
-      isToday = _ref.isToday;
+    disabled = _ref.disabled,
+    checked = _ref.checked,
+    onCheck = _ref.onCheck,
+    className = _ref.className,
+    isToday = _ref.isToday;
   var classes = useCircleStyles();
   var theme = (0, _core.useTheme)();
   var handleClick = (0, _react.useCallback)(function () {
@@ -77,11 +77,11 @@ var Circle = function Circle(_ref) {
     }
   }, [onCheck, disabled, checked]);
   return /*#__PURE__*/_react["default"].createElement(_core.ButtonBase, {
-    className: (0, _classnames["default"])(classes.root, (_classNames = {}, _defineProperty(_classNames, classes.rootText, !checked && !disabled), _defineProperty(_classNames, classes.todayRoot, isToday), _defineProperty(_classNames, classes.checkedRoot, checked && !disabled), _defineProperty(_classNames, classes.checkedRootDisabled, checked && disabled), _classNames), className),
+    className: (0, _classnames["default"])(classes.root, (_classNames = {}, _defineProperty(_classNames, classes.rootText, !checked && !disabled), _defineProperty(_classNames, classes.todayRoot, isToday), _defineProperty(_classNames, classes.rootTextDisabled, disabled), _defineProperty(_classNames, classes.checkedRoot, checked && !disabled), _defineProperty(_classNames, classes.checkedRootDisabled, checked && disabled), _classNames), className),
     disabled: disabled,
     onClick: handleClick,
     style: _objectSpread({}, disabled ? {
-      background: theme.palette.grey.main,
+      background: "#fff",
       fontWeight: 200
     } : {})
   }, /*#__PURE__*/_react["default"].createElement(_core.Typography, {
