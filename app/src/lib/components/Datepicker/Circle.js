@@ -24,7 +24,7 @@ const useCircleStyles = makeStyles(theme => ({
     background: theme.palette.primary.main
   },
   checkedRootDisabled: {
-    background: theme.palette.action.disabled
+    background: "#faaa"
   },
   checkedText: {
     color:
@@ -56,7 +56,7 @@ const Circle = ({ label, disabled, checked, onCheck, className, isToday }) => {
         classes.root,
         {
           [classes.rootText]: !checked && !disabled,
-          // [classes.rootTextDisabled]: disabled,
+          [classes.rootTextDisabled]: disabled,
           [classes.todayRoot]: isToday,
           [classes.checkedRoot]: checked && !disabled,
           [classes.checkedRootDisabled]: checked && disabled
@@ -65,7 +65,7 @@ const Circle = ({ label, disabled, checked, onCheck, className, isToday }) => {
       )}
       disabled={disabled}
       onClick={handleClick}
-      style={{ ...(disabled ? { background: theme.palette.grey.main, fontWeight: 200 }: {})}}
+      style={{ ...(disabled ? { background: "#fff", fontWeight: 200 }: {})}}
     >
       <Typography
         color='inherit'
