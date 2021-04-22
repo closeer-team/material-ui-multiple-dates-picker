@@ -48,14 +48,33 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 // `;
 var CalendarActionButton = function CalendarActionButton(_ref) {
   var cancelButtonText = _ref.cancelButtonText,
-      submitButtonText = _ref.submitButtonText,
-      onCancel = _ref.onCancel,
-      onOk = _ref.onOk,
-      readOnly = _ref.readOnly;
+    submitButtonText = _ref.submitButtonText,
+    onCancel = _ref.onCancel,
+    onOk = _ref.onOk,
+    readOnly = _ref.readOnly;
   return /*#__PURE__*/_react["default"].createElement(_core.DialogActions, null, /*#__PURE__*/_react["default"].createElement(_core.Button, {
-    onClick: onCancel
+    onClick: onCancel,
+    variant: "outlined",
+    style: {
+      fontSize: '12px',
+      fontWeight: 'bold',
+      paddingLeft: '1rem',
+      paddingRight: '1rem',
+      paddingTop: 5,
+      paddingBottom: 5,
+    },
   }, cancelButtonText), !readOnly && /*#__PURE__*/_react["default"].createElement(_core.Button, {
     color: "primary",
+    style: {
+      fontSize: '12px',
+      color: '#000',
+      backgroundColor: "#AFF82D",
+      fontWeight: 'bold',
+      paddingLeft: '1rem',
+      paddingRight: '1rem',
+      paddingTop: 5,
+      paddingBottom: 5,
+    },
     onClick: onOk
   }, submitButtonText));
 };
