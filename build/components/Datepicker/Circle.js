@@ -52,7 +52,7 @@ var useCircleStyles = (0, _core.makeStyles)(function (theme) {
       background: "#faaa"
     },
     checkedText: {
-      color: theme.palette.type === 'dark' ? theme.palette.getContrastText(theme.palette.primary.main) : theme.palette.common.white
+      color: theme.palette.type === 'dark' ? theme.palette.getContrastText(theme.palette.primary.main) : "#2C3033"
     },
     text: {
       textAlign: 'center'
