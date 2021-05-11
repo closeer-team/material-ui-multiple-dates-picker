@@ -68,7 +68,7 @@ var CalendarActionButton = function CalendarActionButton(_ref) {
     style: {
       fontSize: '12px',
       color: '#000',
-      backgroundColor: "#AFF82D",
+      backgroundColor: "#02E2BD",
       fontWeight: 'bold',
       paddingLeft: '1rem',
       paddingRight: '1rem',
