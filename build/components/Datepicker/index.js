@@ -157,11 +157,11 @@ var DatePicker = function DatePicker(_ref2) {
         if(count < limitPerWeek){
           var rangeValidate = true;
           selectedDates.map(item => {
-            if((0, _moment["default"])(item).week() === (0, _moment["default"])(day).week()){
+            // if((0, _moment["default"])(item).week() === (0, _moment["default"])(day).week()){
               const range = new Date(item).getDate() - new Date(day).getDate()
-              if(Math.abs(range) <= rangeMin)
+              if(Math.abs(range) < rangeMin)
                 rangeValidate = false;
-            }
+            // }
           })
           if(rangeValidate){
             dispatch({
