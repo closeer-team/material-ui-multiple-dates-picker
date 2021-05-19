@@ -46,7 +46,7 @@ var useCircleStyles = (0, _core.makeStyles)(function (theme) {
       background: theme.palette.background["default"]
     },
     checkedRoot: {
-      background: theme.palette.primary.main
+      background: "#02E2BD"
     },
     checkedRootDisabled: {
       background: "#faaa"
